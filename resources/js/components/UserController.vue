@@ -77,13 +77,9 @@
     }
 </script>
 
+
 //computer player
 //create scorekeeper
 //user display
 
-<style>
-    #new-quote {
-        max-width: 75vw;
-    }
-</style>
 

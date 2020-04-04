@@ -17,15 +17,16 @@
              requestRock: function(click) {
                 this.$root.$emit('newRock')
                 this.$store.dispatch(pickRock);
-            },  requestPaper: function() {
+             }, requestPaper: function() {
                 this.$root.$emit('newPaper')
                 this.$store.dispatch(pickPaper);
-            },  requestScissor: function() {
+             }, requestScissor: function() {
                 this.$root.$emit('newScissor')
                 this.$store.dispatch(pickScissor);
-            }
+             },
         }
     }
+
 </script>
 
 <style>
@@ -72,5 +73,3 @@
         box-shadow: 2px 2px 5px lightgrey;
     }
 </style>
-
-//child
