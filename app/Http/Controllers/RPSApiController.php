@@ -13,7 +13,10 @@ class RPSApiController extends Controller
             "Scissors",
         ];
         $index = array("Rock", "Paper", "Scissors");
-        return $quotes()->json(["Rock"=>$quotes[$index]]);
-
+        return response()->json(["Rock"=>$quotes[$index]]);
     }
 }
+
+
+
+

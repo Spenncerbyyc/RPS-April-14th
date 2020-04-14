@@ -14,7 +14,22 @@ export default {
       isStart: false
     };
   },
-
+    mounted: function() {
+    this.$root.$on('newQuote', this.getNewQuote)
+},
+  methods: {
+    playGame() {},
+    getComputerChoice() {
+      var vm = (this.randomNumber = Math.floor(Math.random() * 3));
+      if (randomNumber === 0) {
+        vm.computer = "rock";
+      } else if (randomNumber === 1) {
+        vm.computer = "paper";
+      } else {
+        vm.computer = "scissors";
+      }
+    }
+  },
   computed: {
     determineWinner() {
       var vm = this,
@@ -44,22 +59,9 @@ export default {
           return "You won!!";
         }
       }
-    }
-  },
-
-  methods: {
-    playGame() {},
-    getComputerChoice() {
-      var vm = (this.randomNumber = Math.floor(Math.random() * 3));
-      if (randomNumber === 0) {
-        vm.computer = "rock";
-      } else if (randomNumber === 1) {
-        vm.computer = "paper";
-      } else {
-        vm.computer = "scissors";
-      }
-    }
+    },
   }
-};
+}
 </script>
 
+//listen for global events, check slides, compare and who wins, ssot

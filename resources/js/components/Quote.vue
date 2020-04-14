@@ -1,77 +1,30 @@
 <template>
+<div>
     <div id="Rock">
-        <h2>{{Rock}}</h2>
-
+        <h2>Rock</h2>
+    </div>
      <div id="Paper">
-        <h2>{{Paper}}</h2>
+        <h2>Paper</h2>
     </div>
 
-     <div id="Scissor">
-        <h2>{{Rock}}</h2>
+     <div id="Scissors">
+        <h2>Scissors</h2>
+    </div>
     </div>
 </template>
 
 <script>
     export default {
-        data: function() {
-            return {
-                quote: "Rock"
-            }
-        },
-        mounted: function() {
-            this.$root.$on('newQuote', this.getNewQuote)
-        },
         methods: {
-            getNewQuote: function(){
-                axios.get('/new-Quote')
-                .then(response => {
-                    console.log(response);
-                    this.quote = response.data.quote;
-                })
-                .catch(error => {
-                    console.log(error);
-                    this.quote = 'You Lost';
+             requestRock: function(click) {
+                this.$root.$emit('Rock')
 
-        export default {
-        data: function() {
-            return {
-                quote: "Paper"
-            }
-        },
-        mounted: function() {
-            this.$root.$on('newQuote', this.getNewQuote)
-        },
-        methods: {
-            getNewQuote: function(){
-                axios.get('/new-Quote')
-                .then(response => {
-                    console.log(response);
-                    this.quote = response.data.quote;
-                })
-                .catch(error => {
-                    console.log(error);
-                    this.quote = 'You Lost';
+            },  requestPaper: function() {
+                this.$root.$emit('Paper')
 
-        export default {
-        data: function() {
-            return {
-                quote: "Scissor"
-            }
-        },
-        mounted: function() {
-            this.$root.$on('newQuote', this.getNewQuote)
-        },
-        methods: {
-            getNewQuote: function(){
-                axios.get('/new-Quote')
-                .then(response => {
-                    console.log(response);
-                    this.quote = response.data.quote;
-                })
-                .catch(error => {
-                    console.log(error);
-                    this.quote = 'You Lost';
-                });
+            },  requestScissors: function() {
+                this.$root.$emit('Scissors')
+
             }
         }
     }

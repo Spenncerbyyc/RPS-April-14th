@@ -1,13 +1,14 @@
 <template>
-    <div id = "app">
+    <div>
     <div id="Rock" @click="requestRock">
         <p><strong>Rock</strong></p>
     </div>
     <div id="Paper" @click="requestPaper">
         <p><strong>Paper</strong></p>
     </div>
-    <div id="Scissor" @click="requestScissor">
-        <p><strong>Scissor</strong></p>
+    <div id="Scissors" @click="requestScissors">
+        <p><strong>Scissors</strong></p>
+    </div>
     </div>
 </template>
 
@@ -16,13 +17,13 @@
         methods: {
              requestRock: function(click) {
                 this.$root.$emit('newRock')
-                this.$store.dispatch(pickRock);
-            },  requestPaper: function() {
+
+                 },  requestPaper: function() {
                 this.$root.$emit('newPaper')
-                this.$store.dispatch(pickPaper);
-            },  requestScissor: function() {
-                this.$root.$emit('newScissor')
-                this.$store.dispatch(pickScissor);
+
+            },  requestScissors: function() {
+                this.$root.$emit('newScissors')
+
             }
         }
     }

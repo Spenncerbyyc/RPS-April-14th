@@ -6,8 +6,8 @@
         <h2>{{Paper}}</h2>
     </div>
 
-     <div id="Scissor">
-        <h2>{{Rock}}</h2>
+     <div id="Scissors">
+        <h2>{{Scissors}}</h2>
     </div>
 </template>
 
