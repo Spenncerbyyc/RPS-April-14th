@@ -1,67 +1,72 @@
-new
 <template>
-  <div id="Scorekeeper">
-    <h1>{{ userScore }} - {{ computerScore }}</h1>
+  <div>
+    <div id="Scorekeeper">
+      <h1>{{ playerScore }} - {{ computerScore }}</h1>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
+  data: function() {
     return {
-      user: "",
-      computer: "",
-      isStart: false
+      playerSelectionMove: "",
+      computerSelectionMove: "",
+      playerScore: 0,
+      computerScore: 0
     };
   },
-    mounted: function() {
-    this.$root.$on('newQuote', this.getNewQuote)
-},
+  mounted: function() {
+    this.$root.$on("playerSelection", this.playerSelection); //call method that tells computer to make a move, 1 emit
+    this.$root.$on("computerSelection", this.computerSelection);
+    //listening for player/computer emit 1 thing
+  },
   methods: {
     playGame() {},
-    getComputerChoice() {
-      var vm = (this.randomNumber = Math.floor(Math.random() * 3));
-      if (randomNumber === 0) {
-        vm.computer = "rock";
-      } else if (randomNumber === 1) {
-        vm.computer = "paper";
-      } else {
-        vm.computer = "scissors";
+    playerSelection: function(selection) {
+      this.playerSelectionMove = selection;
+      this.$root.$emit("ScoreKeeper", "Player Made a Move");
+    },
+    computerSelection: function(selection) {
+      this.computerSelectionMove = selection;
+      this.getWinner();
+    },
+    getWinner() {
+      if (this.playerSelectionMove === this.computerSelectionMove) {
+        console.log("Tie Game!");
+      }
+      if (this.playerSelectionMove === "Rock") {
+        if (this.computerSelectionMove === "Paper") {
+          this.computerScore++;
+        } else {
+          this.playerScore++;
+        }
+      }
+      if (this.playerSelectionMove === "Paper") {
+        if (this.computerSelectionMove === "Scissors") {
+          this.computerScore++;
+        } else {
+          this.playerScore++;
+        }
+      }
+      if (this.playerSelectionMove === "Scissors") {
+        if (this.computerSelectionMove === "Rock") {
+          this.computerScore++;
+        } else {
+          this.playerScore++;
+        }
       }
     }
-  },
-  computed: {
-    determineWinner() {
-      var vm = this,
-        userChoice = vm.user,
-        getComputerChoice = vm.computer;
-      if (userChoice === getComputerChoice) {
-        return "Tie Game!";
-      }
-      if (userChoice === "rock") {
-        if (getComputerChoice === "paper") {
-          return "You lost!";
-        } else {
-          return "You won!";
-        }
-      }
-      if (userChoice === "paper") {
-        if (getComputerChoice === "scissors") {
-          return "You lost!";
-        } else {
-          return "You won!";
-        }
-      }
-      if (userChoice === "scissors") {
-        if (getComputerChoice === "rock") {
-          return "You lost!";
-        } else {
-          return "You won!!";
-        }
-      }
-    },
   }
-}
+};
 </script>
 
-//listen for global events, check slides, compare and who wins, ssot
+//Win condition, and pretty it up
+//UserScore ComputerEntry
+
+//listen for global events, check slides, compare and who wins, ssot. add score, listening
+then make API request, or tell computer to make API, who won? match up with image,
+Scorekeeper emits to ComputerPlayer
+Scorekeepers listening for 2 events s
+
+Scorekeeper listens for child emit from UD, then emits to ComputerPlayer, then listens for CP

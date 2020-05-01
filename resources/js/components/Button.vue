@@ -16,13 +16,13 @@
     export default {
         methods: {
              requestRock: function(click) {
-                this.$root.$emit('newRock')
+                this.$root.$emit('Rock')
 
-                 },  requestPaper: function() {
-                this.$root.$emit('newPaper')
+                 },  requestPaper: function(click) {
+                this.$root.$emit('Paper')
 
-            },  requestScissors: function() {
-                this.$root.$emit('newScissors')
+            },  requestScissors: function(click) {
+                this.$root.$emit('Scissors')
 
             }
         }

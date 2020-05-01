@@ -1,52 +1,45 @@
 <template>
-    <div id="Rock">
-        <h2>{{Rock}}</h2>
-
-     <div id="Paper">
-        <h2>{{Paper}}</h2>
-    </div>
-
-     <div id="Scissors">
-        <h2>{{Scissors}}</h2>
-    </div>
+  <div>
+    <h2>{{quote}}</h2>
+  </div>
 </template>
 
 <script>
-    export default {
-        data: function() {
-            return {
-                quote: "Rock"
-            }
-        },
-        function() {
-            return {
-                quote: "Paper"
-            }
-        },
-        function() {
-            return {
-                quote: "Scissor"
-            }
-        },
-        mounted: function() {
-            this.$root.$on('newQuote', this.getNewQuote)
-        },
-        methods: {
-            getNewQuote: function(){
-                axios.get('/new-Quote')
-                .then(response => {
-                    console.log(response);
-                    this.quote = response.data.quote;
-                })
-                .catch(error => {
-                    console.log(error);
-                    this.quote = 'You Lost';
-            });
-        },
+export default {
+  name: "Computer Player",
+  data: function() {
+    return {
+      quote: "Pick a Move"
+    };
+  },
+  mounted: function() {
+    this.$root.$on("ScoreKeeper", this.getComputerPlayerMove); //listen for SK, not player
+  },
+  methods: {
+    getComputerPlayerMove: function(selection) {
+      //comes AFTER API, random math comes from API,
+      axios
+        .get("/kanye-quote")
+        .then(response =>  {//this is CP move
+          console.log(response);
+          this.$root.$emit("computerSelection", response.data.quote);
+        })
+        .catch(error => {
+          console.log(error);
+          this.quote = computerSelection;
+        });
+    },
+    computerSelection: function(selection) {
+      this.$root.$emit("computerSelection", "Computer Made a Move");
     }
-}
+  }
+};
 </script>
 
 
 //parent
 // Single export default, make like Button vue
+//Listens to Scorekeeper, makes API, listens for API return
+
+//      }
+//    }

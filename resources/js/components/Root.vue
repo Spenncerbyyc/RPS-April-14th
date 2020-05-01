@@ -1,21 +1,23 @@
 <template>
   <div id='grid-container'>
-    <Button />
-    <Quote />
+    <Player />
+    <ComputerPlayer />
+    <ScoreKeeper />
+    <UserDisplay />
   </div>
 </template>
 
 <script>
-import Button from "./Button.vue";
-import Quote from "./Quote.vue";
+import Player from "./Player.vue";
+import ComputerPlayer from "./ComputerPlayer.vue";
+import ScoreKeeper from "./ScoreKeeper.vue";
+import UserDisplay from "./UserDisplay.vue";
 
 export default {
   name: "Root",
-  components: {
-    Button,
-    Quote
+  components: {UserDisplay, Player, ComputerPlayer, ScoreKeeper,
   }
-};
+  };
 </script>
 
 <style>

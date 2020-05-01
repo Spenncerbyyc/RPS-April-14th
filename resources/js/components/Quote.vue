@@ -6,11 +6,10 @@
      <div id="Paper">
         <h2>Paper</h2>
     </div>
-
      <div id="Scissors">
         <h2>Scissors</h2>
     </div>
-    </div>
+</div>
 </template>
 
 <script>
